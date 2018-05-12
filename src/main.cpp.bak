@@ -60,7 +60,12 @@ int main()
           */
 
 
-		 
+		  cte = robot.y
+          diff_cte = cte - prev_cte
+          int_cte += cte
+          prev_cte = cte
+          steer = -params[0] * cte - params[1] * diff_cte - params[2] * int_cte
+
           
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
