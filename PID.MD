@@ -1,6 +1,10 @@
-- 代码展示
+- 为什么要引入PID
 
-  > 想象当无人驾驶汽车在遇到大风的时候，会发生一定的偏离航线，但是如果仅仅使用PD控制的话，会按照和没有风的时候的角度进行，其实这个时候角度应该偏移得更多或更少一点，为了解决这个问题使用了积分项。
+  1. 如果只有比例P，这时候车辆会出现波荡，在参考线附近徘徊，迟迟不能达到理想状态，显然坐这样的车是很不舒服的。
+  2. 为解决如上的情况，引入导数项D，**注意：这是一个“抵抗力”，会使得车达到参考线的时间变长，但是却使路线更平滑**。
+  3. 因为P和D是一对反作用角度，所以会出现当两个转向角的大小一样，方向相反的问题使得最终角度为0，但是实际并没有达到参考线，这个时候引入积分项I，使得路线和参考线的面积尽可能小，过大的积分项参数Ki会使得无人车在运动的时出现波动，过小的积分项参数Ki会使得无人车在运动的时候很久不能到达 目标点。
+
+- 代码展示
 
   ```python
   # ----------------
@@ -136,7 +140,7 @@
                 err += cte ** 2
         return x_trajectory, y_trajectory, err / n
 
-  #Make this tolerance bigger if you are timing out!
+  # 使用twiddle算法，计算参数
     def twiddle(tol=0.2): 
         p = [0, 0, 0]
         dp = [1, 1, 1]
@@ -145,7 +149,8 @@
         it = 0
         while sum(dp) > tol:
             print("Iteration {}, best error = {}".format(it, best_err))
-            for i in range(len(p)):
+              # 遍历每一个参数，调整参数值
+              for i in range(len(p)):
                 p[i] += dp[i]
                 robot = make_robot()
                 x_trajectory, y_trajectory, err = run(robot, p)
@@ -178,7 +183,5 @@
     ax1.plot(x_trajectory, np.zeros(n), 'r', label='reference')
   ```
 
-
-  
 
   ![](imgs/1.jpg)
