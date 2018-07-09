@@ -2,7 +2,8 @@
 <projectDescription>
 	<name>PID_-Debug@build</name>
 	<comment></comment>
-	<projects></projects>
+	<projects>
+	</projects>
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.make.core.makeBuilder</name>
@@ -46,7 +47,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>/Users/xiaoqiangxie/Documents/workspace/PID-Control/build</value>
+					<value>/home/tonyx/workspace/PID-Control/build</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
@@ -82,7 +83,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.build.location</key>
-					<value>/Users/xiaoqiangxie/Documents/workspace/PID-Control/build</value>
+					<value>/home/tonyx/workspace/PID-Control/build</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
@@ -96,7 +97,8 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.cdt.make.core.ScannerConfigBuilder</name>
-			<arguments/>
+			<arguments>
+			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
@@ -109,7 +111,7 @@
 		<link>
 			<name>[Source directory]</name>
 			<type>2</type>
-			<location>/Users/xiaoqiangxie/Documents/workspace/PID-Control/src</location>
+			<location>/home/tonyx/workspace/PID-Control/src</location>
 		</link>
 		<link>
 			<name>[Subprojects]</name>
@@ -119,7 +121,7 @@
 		<link>
 			<name>[Subprojects]/PID_</name>
 			<type>2</type>
-			<location>/Users/xiaoqiangxie/Documents/workspace/PID-Control/src</location>
+			<location>/home/tonyx/workspace/PID-Control/src</location>
 		</link>
 		<link>
 			<name>[Targets]</name>
@@ -144,12 +146,12 @@
 		<link>
 			<name>[Targets]/[exe] pid/Source Files/PID.cpp</name>
 			<type>1</type>
-			<location>/Users/xiaoqiangxie/Documents/workspace/PID-Control/src/PID.cpp</location>
+			<location>/home/tonyx/workspace/PID-Control/src/PID.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] pid/Source Files/main.cpp</name>
 			<type>1</type>
-			<location>/Users/xiaoqiangxie/Documents/workspace/PID-Control/src/main.cpp</location>
+			<location>/home/tonyx/workspace/PID-Control/src/main.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] pid/Header Files</name>
@@ -168,11 +170,6 @@
 		</link>
 		<link>
 			<name>[Targets]/[exe] pid/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pid/Object Libraries</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>

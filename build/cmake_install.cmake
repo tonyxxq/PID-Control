@@ -1,4 +1,4 @@
-# Install script for directory: /Users/xiaoqiangxie/Documents/workspace/PID-Control
+# Install script for directory: /home/tonyx/workspace/PID-Control/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,9 +27,9 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
-# Is this installation the result of a crosscompile?
-if(NOT DEFINED CMAKE_CROSSCOMPILING)
-  set(CMAKE_CROSSCOMPILING "FALSE")
+# Install shared libraries without execute permission?
+if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/xiaoqiangxie/Documents/workspace/PID-Control/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/tonyx/workspace/PID-Control/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

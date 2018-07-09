@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/pid.dir/src/PID.cpp.o"
-  "CMakeFiles/pid.dir/src/main.cpp.o"
+  "CMakeFiles/pid.dir/PID.cpp.o"
+  "CMakeFiles/pid.dir/main.cpp.o"
   "pid.pdb"
   "pid"
 )

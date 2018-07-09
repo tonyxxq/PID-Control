@@ -38,10 +38,23 @@ int main() {
 
   PID pid;
   // 初始化PID参数，这个需要调节pid方面的知识
-  double G = 1.7;  // Steering gain factor.
-  double Kp = 0.05 * G;  // Proportional gain 0.05
-  double Ki = 0.0005 * G;  // Integral gain
-  double Kd = 0.45 * G;  // Derivative gain 0.45
+  // 0.085, 0.00085, 0.765
+  // 1，0，0 也能绕跑道形式，但是会出现大的转动
+  // 0.1，0，0 不会出现大的摆动
+  // 0，1，0 出来就撞到了
+  // 0，0.1，0 出来就撞到了
+  // 0，0.001，0 出来就撞到了
+  // 0，0.0001，0 不会转向
+  // 1，0.001, 0车还是有点会摇晃
+  // 0.8，0.001, 0车还是有点会摇晃
+  // 0，0, 1 方向盘来回摆动
+  // 0，0,　0.1 大转弯的时候被撞上了
+  // 0，0,　0.1５ 压线了
+  // 0，0,　0.5 可以跑一圈了
+  // 0.１，0.0001, 0.５
+  double Kp = 0.1;
+  double Ki = 0.001;
+  double Kd = 0.5;
   pid.Init(Kp, Ki, Kd);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
