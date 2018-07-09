@@ -4,7 +4,71 @@
   2. 为解决如上的情况，引入导数项D，**注意：这是一个“抵抗力”，会使得车达到参考线的时间变长，但是却使路线更平滑**。
   3. 因为P和D是一对反作用角度，所以会出现当两个转向角的大小一样，方向相反的问题使得最终角度为0，但是实际并没有达到参考线，这个时候引入积分项I，使得路线和参考线的面积尽可能小，过大的积分项参数Ki会使得无人车在运动的时出现波动，过小的积分项参数Ki会使得无人车在运动的时候很久不能到达 目标点。
 
-- 代码展示
+- 初始化参数，手动调整的
+
+  ```c++
+  // 调整PID参数
+  // 1，0，0 也能绕跑道形式，但是会出现大的转动
+  // 0.1，0，0 不会出现大的摆动
+  // 0，1，0 出来就撞到了
+  // 0，0.1，0 出来就撞到了
+  // 0，0.001，0 出来就撞到了
+  // 0，0.0001，0 不会转向
+  // 1，0.001, 0车还是有点会摇晃
+  // 0.8，0.001, 0车还是有点会摇晃
+  // 0，0, 1 方向盘来回摆动
+  // 0，0,　0.1 大转弯的时候被撞上了
+  // 0，0,　0.1５ 压线了
+  // 0，0,　0.5 可以跑一圈了
+  // 0.１，0.0001, 0.５
+  double Kp = 0.1;
+  double Ki = 0.001;
+  double Kd = 0.5;
+  pid.Init(Kp, Ki, Kd);
+  ```
+
+- 计算误差
+
+  ```c++
+  #include "PID.h"
+
+  using namespace std;
+
+  /*
+   * TODO: Complete the PID class.
+   */
+
+  PID::PID() {
+  }
+
+  PID::~PID() {
+  }
+
+  // 初始化PID参数
+  void PID::Init(double Kp, double Ki, double Kd) {
+    this->Kp = Kp;
+    this->Ki = Ki;
+    this->Kd = Kd;
+
+    p_error = 0.0;
+    i_error = 0.0;
+    d_error = 0.0;
+  }
+
+  // 更新误差
+  void PID::UpdateError(double cte) {
+    p_error = cte;
+    i_error = i_error + cte;
+    d_error = cte - d_error;
+  }
+
+  // 计算总误差
+  double PID::TotalError() {
+    return Kp * p_error + Ki * i_error + Kd * d_error;
+  }
+  ```
+
+- twiddle, python实现代码展示
 
   ```python
   # ----------------
@@ -182,6 +246,5 @@
     ax1.plot(x_trajectory, y_trajectory, 'g', label='Twiddle PID controller')
     ax1.plot(x_trajectory, np.zeros(n), 'r', label='reference')
   ```
-
 
   ![](imgs/1.jpg)
